@@ -10,20 +10,18 @@ import Test_Pages.LogoutPage;
 import drivers.BaseTest;
 import drivers.DriverManager;
 
-public final class LoginTest extends BaseTest{
+public final class LoginTest extends BaseTest {
 	private LoginTest() {
 
 	}
 
 	@Test
 	public void LoginLogoutOrangeHRM() throws InterruptedException {
-		LogoutPage logout =new LogoutPage();
+		LogoutPage logout = new LogoutPage();
 		LoginPage login = new LoginPage();
-		login.loginOrangeHRM("Admin","admin123");
-		
+		login.loginOrangeHRM("Admin", "admin123");
 		String s = DriverManager.getDriver().getTitle();
 		Assert.assertEquals(s, "OrangeHRM");
 		logout.logoutOrangeHRM();
-		
 	}
 }
