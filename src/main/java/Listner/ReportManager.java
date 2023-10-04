@@ -6,18 +6,18 @@ import org.openqa.selenium.WebDriver;
 public class ReportManager {
 	private ReportManager() {
 	}
+	private static ThreadLocal<ExtentTest> extentTest = new ThreadLocal<ExtentTest>();
+	
 
-	private static final ThreadLocal<ExtentTest> extTest = new ThreadLocal<>();
-
-	static ExtentTest getExtentTest() {
-		return extTest.get();
+	public static ThreadLocal<ExtentTest> getExtentTest() {
+		return extentTest;
 	}
 
-	static void setExtentTest(ExtentTest test) {
-		extTest.set(test);
-	}
-
-	static void unloadExtent() {
-		extTest.remove();
-	}
+//	public static void setExtentTest(ThreadLocal<ExtentTest> test) {
+//		extTest.set(test);
+//	}
+//
+//	static void unloadExtent() {
+//		extTest.remove();
+//	}
 }

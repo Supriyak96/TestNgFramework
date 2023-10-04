@@ -1,9 +1,15 @@
 package utils;
 
+import java.io.File;
+import java.text.SimpleDateFormat;
 import java.time.Duration;
+import java.util.Date;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -39,4 +45,27 @@ public class CommonUtilities {
 		}
 		return true;
 	}
+	
+	public static String getScreenshotName(String methodName) {
+//		Date date = new Date() ;
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss") ;
+		String fileName =new SimpleDateFormat("yyyy-MM-dd hh-mm-ss'.png'").format(new Date());
+		
+//		String file = methodName + "_" + fileName  + ".png";
+		return methodName + "_" + fileName;
+	}
+
+	
+	public static String takeScreenshot(String methodName) {
+		String fileName = getScreenshotName(methodName);
+		String directory = "/Reports/screenshots/";
+		new File(directory).mkdirs();
+		String path = directory + fileName;
+		try {
+			File screenshot = ((TakesScreenshot) DriverManager.getDriver()).getScreenshotAs(OutputType.FILE);
+			FileUtils.copyFile(screenshot, new File(path));
+		} catch (Exception e) {
+		}
+		return path;
+}
 }

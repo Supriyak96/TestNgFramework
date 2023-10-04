@@ -11,7 +11,9 @@ import org.testng.annotations.BeforeSuite;
 public class BaseTest {
 	protected BaseTest() {
 	}
+	
 
+	
 	@BeforeMethod()
 	public void setUP() throws IOException {
 		DriverFactory dr= new DriverFactory();
@@ -22,4 +24,6 @@ public class BaseTest {
 	public void closeBrowser() {
 		DriverFactory.quiteDriver();
 	}
+	
+	
 }

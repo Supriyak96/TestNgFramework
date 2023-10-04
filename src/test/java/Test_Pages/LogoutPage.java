@@ -9,7 +9,7 @@ import utils.CommonUtilities;
 
 public class LogoutPage extends CommonUtilities {
 	private final By welcomeLink = By.className("oxd-userdropdown-img");
-	private final By logoutBtn = By.xpath("//a[text()='Logout']");
+	private final By logoutBtn = By.xpath("//a[text()='Logout1']");
 
 	public void logoutOrangeHRM() throws InterruptedException {
 		// Explicit wait
